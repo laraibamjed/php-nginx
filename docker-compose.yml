@@ -1,0 +1,16 @@
+services:
+  nginx:
+    image: nginx
+    container_name: ng
+    ports:
+      - 7070:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php
+
+  php:
+    image: php:fpm
+    container_name: php
+    volumes:
+      - ./php:/var/www/html/
